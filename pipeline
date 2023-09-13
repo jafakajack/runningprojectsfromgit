@@ -14,7 +14,7 @@ pipeline {
         }
          stage('Deploying the code in the tomcat') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: '06791bb1-0e27-436f-aa61-69131c365c31', path: '', url: 'http://localhost:8080')], contextPath: 'declarativepipelinejob1', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: '06791bb1-0e27-436f-aa61-69131c365c31', path: '', url: 'http://localhost:8080')], contextPath: 'runningfromgit', war: '**/*.war'
             }
         }
     }

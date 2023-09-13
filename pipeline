@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('taking the source code') {
+            steps {
+                git 'https://github.com/learnsoftwares/maven_demo.git'
+            }
+        }
+         stage('bluild the code') {
+            steps {
+                bat 'mvn verify'
+            }
+        }
+         stage('Deploying the code in the tomcat') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: '06791bb1-0e27-436f-aa61-69131c365c31', path: '', url: 'http://localhost:8080')], contextPath: 'declarativepipelinejob1', war: '**/*.war'
+            }
+        }
+    }
+}
